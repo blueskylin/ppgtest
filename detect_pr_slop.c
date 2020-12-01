@@ -67,14 +67,14 @@ int detectPulseBySlop(SPO2Parameter *parameter)
     stepCount++;
     currentSlop = value - preSensorValue;
 
-    /***********  波形拐点 **************************/
+
     if(currentSlop < 0 && preSlop >= 0 && slopFlag == 0)
         {
             currentBeat = stepCount;
             slopFlag = 1;
             valueShakeCnt = 0;
         }
-    /***********  去除由于干扰造成的伪拐点**********/
+
     if(slopFlag == 1 && currentSlop < 0)
         {
             valueShakeCnt++;
@@ -85,7 +85,7 @@ int detectPulseBySlop(SPO2Parameter *parameter)
             slopFlag = 0;
         }
 
-    /***********  取得拐点位置计算对应的PR值 *******/
+
     if(valueShakeCnt >= VALUE_SHAKE_THRESHOLD)
         {
             if(isFirstPulse == 0)
