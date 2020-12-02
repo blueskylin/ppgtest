@@ -6,7 +6,6 @@
 
 
 /* Pulse detection parameters */
-
 #define VALUE_SHAKE_THRESHOLD       7 //5  value 5 easy count huge hr
 #define STEP_OVERFLOW_COMPENSATION    256
 #define PULSE_BPM_SAMPLE_SIZE       5 //Moving average size
@@ -14,6 +13,7 @@
 #define DATA_BASE_DIFF              1600 //value too large easy loss beat place
 #define COUNT_HR_TIME_OUT           4  // 30BMP time * 2
 #define HR_SHAKE_THRESHOLD          75
+
 
 static int preSensorValue = 0;
 static int currentBeat = 0;
@@ -23,8 +23,10 @@ static int valueShakeCnt = 0;
 static unsigned char isFirstPulse = 0;
 static int resultCnt = 0;
 static char slopFlag = 0;
+
 static int preSlop1 = 0;
 static int preSlop2 = 0;
+
 static int currentSlop = 0;
 static int ppgSample = 1;
 
@@ -32,6 +34,7 @@ static int prePr = 0;
 static float valuesBPM[PULSE_BPM_SAMPLE_SIZE];
 static unsigned char BPMCnt;
 static int hrCnt = 0;
+
 
 static int debug = 0;
 
@@ -54,7 +57,6 @@ void initDetectPulseBySlop(int sampleRate)
     ppgSample = sampleRate;
     prePr = 0;
     hrCnt = 0;
-	
 	  for(i = 0; i < PULSE_BPM_SAMPLE_SIZE; i++)
 				valuesBPM[i] = 0;
 
@@ -140,6 +142,8 @@ int detectPulseBySlop(SPO2Parameter *parameter)
 
     preSlop2 = preSlop1;
     preSlop1 = currentSlop;
+
+
     preSensorValue = value;
 
     return ret;
@@ -164,6 +168,7 @@ int checkPrValue(int pr)
 
     return 1;
 }
+
 
 int calulatePr(const int *rawPr, int dataSize)
 {
@@ -192,6 +197,7 @@ int calulatePr(const int *rawPr, int dataSize)
 	   }
 		 
      if(ret <= 0){
+
         hrCnt++;
         if(hrCnt >= (ppgSample * COUNT_HR_TIME_OUT)){
             prePr = 0;
@@ -206,3 +212,4 @@ int calulatePr(const int *rawPr, int dataSize)
 		 
 		 return ret;
 }
+
