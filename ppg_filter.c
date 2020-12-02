@@ -5,7 +5,7 @@
 #define RING_ADD(a,b,m) ((a)+(b))%(m)
 #define RING_SUB(a,b,m) ((a) - (b) >= 0 )? ((a) - (b)) :((a) - (b) + (m))
 
-typedef long long INT64;
+typedef __int64 INT64;
 
 int FIR_COFFES[FIR_FILTER_LENGTH]=
 {  
