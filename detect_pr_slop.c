@@ -5,7 +5,7 @@
 
 
 
-/* Pulse detection parameters */
+/* test ppg */
 
 #define VALUE_SHAKE_THRESHOLD       7 //5  value 5 easy count huge hr
 #define STEP_OVERFLOW_COMPENSATION    256
