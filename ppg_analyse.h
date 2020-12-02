@@ -13,7 +13,9 @@ typedef struct _SPO2Parameter
 } SPO2Parameter;
 
 
+
 typedef void (*InitDetectPR)();
+
 
 typedef int (*DetectPR)(SPO2Parameter *parameter);
 
