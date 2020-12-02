@@ -12,7 +12,7 @@
 #define PULSE_BPM_SAMPLE_SIZE       5 //Moving average size
 #define DEFAULT_PR 75
 
-static int preSensorValue = 0;
+static int test =1;//static int preSensorValue = 0;
 static int currentBeat = 0;
 static int lastBeat = 0;
 static unsigned char stepCount = 0;
